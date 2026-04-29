@@ -17,6 +17,7 @@ public class Atm {
 
         if (!enteredCard.equals(cardNumber)) {
             System.out.println("Invalid card number. Exiting.");
+            sc.close();
             return;
         }
 
@@ -39,6 +40,7 @@ public class Atm {
 
         if (!loggedIn) {
             System.out.println("Card blocked. Too many wrong attempts.");
+            sc.close();
             return;
         }
 
@@ -52,14 +54,16 @@ public class Atm {
             System.out.println("3. Withdraw Money");
             System.out.println("4. Exit");
             System.out.print("Enter choice: ");
-            choice = sc.nextInt();
+
+            String input = sc.nextLine();
+            choice = Integer.parseInt(input);
 
             if (choice == 1) {
                 System.out.println("Your balance is: Rs. " + balance);
 
             } else if (choice == 2) {
                 System.out.print("Enter amount to deposit: Rs. ");
-                double amount = sc.nextDouble();
+                double amount = Double.parseDouble(sc.nextLine());
                 if (amount <= 0) {
                     System.out.println("Invalid amount.");
                 } else {
@@ -69,7 +73,7 @@ public class Atm {
 
             } else if (choice == 3) {
                 System.out.print("Enter amount to withdraw: Rs. ");
-                double amount = sc.nextDouble();
+                double amount = Double.parseDouble(sc.nextLine());
                 if (amount <= 0) {
                     System.out.println("Invalid amount.");
                 } else if (amount > balance) {
@@ -83,7 +87,7 @@ public class Atm {
                 System.out.println("Thank you for using our ATM. Goodbye!");
 
             } else {
-                System.out.println("Invalid choice. Please enter 1-4.");
+                System.out.println("Invalid choice. Please enter 1 to 4.");
             }
         }
 
